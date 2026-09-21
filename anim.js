@@ -7,14 +7,14 @@ var lyrics = document.querySelector("#lyrics");
 // (cortes de la canción en ~66s, ~84s, ~116s, ~148-152s y el final ~188s).
 var lyricsData = [
   // --- Verso 1 (8 líneas) ---
-  { text: "Quería evitar el amor", time: 9 },
-  { text: "Y la vida color de rosa", time: 13 },
-  { text: "Obviar cosas del corazón", time: 17 },
-  { text: "Y poder hablar de otra cosa", time: 21 },
-  { text: "Quería evitar la pasión", time: 25 },
-  { text: "Y esos pasajes que se pintan", time: 28 },
-  { text: "Cuando la obsesión y el deseo", time: 32 },
-  { text: "Te alteran por una imagen femenina", time: 35 },
+  { text: "Quería evitar el amor", time: 14 },
+  { text: "Y la vida color de rosa", time: 18 },
+  { text: "Obviar cosas del corazón", time: 21 },
+  { text: "Y poder hablar de otra cosa", time: 25 },
+  { text: "Quería evitar la pasión", time: 28 },
+  { text: "Y esos pasajes que se pintan", time: 31 },
+  { text: "Cuando la obsesión y el deseo", time: 35 },
+  { text: "Te alteran por una imagen femenina", time: 38 },
 
   // --- Pre-coro (5 líneas) ---
   { text: "Pero da la casualidad", time: 40 },
@@ -67,29 +67,44 @@ var lyricsData = [
   { text: "Me dejó de doler", time: 181 },
 ];
 
-// Animar las letras
+// Animar las letras: cada línea se muestra desde su "time" hasta que
+// empieza la línea siguiente (en vez de una ventana fija de 6s, que
+// hacía que una línea se quedara pisando a la próxima si estaban
+// muy pegadas en el tiempo).
 function updateLyrics() {
-  var time = Math.floor(audio.currentTime);
-  var currentLine = lyricsData.find(
-    (line) => time >= line.time && time < line.time + 6
-  );
+  var time = audio.currentTime;
 
-  if (currentLine) {
-    // Calcula la opacidad basada en el tiempo en la línea actual
+  var idx = -1;
+  for (var i = 0; i < lyricsData.length; i++) {
+    if (time >= lyricsData[i].time) {
+      idx = i;
+    } else {
+      break;
+    }
+  }
+
+  if (idx === -1) {
+    lyrics.style.opacity = 0;
+    lyrics.innerHTML = "";
+    return;
+  }
+
+  var currentLine = lyricsData[idx];
+  var nextTime =
+    idx + 1 < lyricsData.length ? lyricsData[idx + 1].time : currentLine.time + 6;
+
+  if (time < nextTime) {
     var fadeInDuration = 0.1; // Duración del efecto de aparición en segundos
     var opacity = Math.min(1, (time - currentLine.time) / fadeInDuration);
-
-    // Aplica el efecto de aparición
     lyrics.style.opacity = opacity;
     lyrics.innerHTML = currentLine.text;
   } else {
-    // Restablece la opacidad y el contenido si no hay una línea actual
     lyrics.style.opacity = 0;
     lyrics.innerHTML = "";
   }
 }
 
-setInterval(updateLyrics, 1000);
+setInterval(updateLyrics, 200);
 
 //funcion titulo
 // Función para ocultar el título después de la canción
