@@ -2,35 +2,71 @@
 var audio = document.querySelector("audio");
 var lyrics = document.querySelector("#lyrics");
 
-// Array de objetos que contiene cada línea y su tiempo de aparición en segundos
+// Array de objetos que contiene cada línea y su tiempo de aparición en segundos.
+// Los "time" son ESTIMADOS repartidos según la estructura verso/coro de la canción
+// (verso1 - precoro - coro - verso2 - coro extendido - coro corto - coro final).
+// Completá cada "text" con tu letra y ajustá los "time" escuchando la canción
+// para que la aparición de cada línea calce exacta con el audio.
 var lyricsData = [
-  { text: "At the time", time: 15 },
-  { text: "The whisper of birds", time: 18 },
-  { text: "Lonely before the sun cried", time: 27 },
-  { text: "Fell from the sky", time: 32 },
-  { text: "Like water drops", time: 33 },
-  { text: "Where I'm now? I don't know why", time: 41 },
-  { text: "Nice butterflies in my hands", time: 47 },
-  { text: "Too much light for twilight", time: 54 },
-  { text: "In the mood for the flowers love", time: 59 },
-  { text: "That vision", time: 67 },
-  { text: "Really strong, blew my mind", time: 72 },
-  { text: "Silence Let me see what it was", time: 78 },
-  { text: "I only want to live in clouds", time: 83 },
-  { text: "Where I'm now? I don't know why", time: 91 },
-  { text: "Nice butterflies in my hands", time: 97 },
-  { text: "Too much light for twilight", time: 104 },
-  { text: "In the mood for the flowers love", time: 108 },
-  { text: "At the time", time: 144 },
-  { text: "The whisper of birds", time: 148 },
-  { text: "Lonely before the sun cried", time: 153 },
-  { text: "Fell from the sky", time: 158 },
-  { text: "Like water drops", time: 164 },
-  { text: "Where I'm now? I don't know why", time: 169 },
-  { text: "Nice butterflies in my hands", time: 176 },
-  { text: "Too much light for twilight", time: 183 },
-  { text: "In the mood for the flowers", time: 188 },
-  { text: "Love.", time: 140 },
+  // --- Verso 1 (8 líneas) ---
+  { text: "", time: 10 },
+  { text: "", time: 13 },
+  { text: "", time: 16 },
+  { text: "", time: 20 },
+  { text: "", time: 23 },
+  { text: "", time: 26 },
+  { text: "", time: 29 },
+  { text: "", time: 32 },
+
+  // --- Pre-coro (5 líneas) ---
+  { text: "", time: 40 },
+  { text: "", time: 43 },
+  { text: "", time: 46 },
+  { text: "", time: 50 },
+  { text: "", time: 53 },
+
+  // --- Coro 1 (5 líneas) ---
+  { text: "", time: 62 },
+  { text: "", time: 65 },
+  { text: "", time: 68 },
+  { text: "", time: 71 },
+  { text: "", time: 74 },
+
+  // --- Verso 2 (11 líneas) ---
+  { text: "", time: 88 },
+  { text: "", time: 91 },
+  { text: "", time: 94 },
+  { text: "", time: 98 },
+  { text: "", time: 101 },
+  { text: "", time: 104 },
+  { text: "", time: 107 },
+  { text: "", time: 110 },
+  { text: "", time: 114 },
+  { text: "", time: 117 },
+  { text: "", time: 120 },
+
+  // --- Coro 2 extendido (9 líneas) ---
+  { text: "", time: 130 },
+  { text: "", time: 133 },
+  { text: "", time: 136 },
+  { text: "", time: 139 },
+  { text: "", time: 142 },
+  { text: "", time: 145 },
+  { text: "", time: 148 },
+  { text: "", time: 151 },
+  { text: "", time: 154 },
+
+  // --- Coro 3 corto (3 líneas) ---
+  { text: "", time: 165 },
+  { text: "", time: 168 },
+  { text: "", time: 171 },
+
+  // --- Coro 4 final extendido (5 líneas) ---
+  { text: "", time: 178 },
+  { text: "", time: 181 },
+  { text: "", time: 184 },
+  { text: "", time: 188 },
+  { text: "", time: 191 },
 ];
 
 // Animar las letras
@@ -68,5 +104,6 @@ function ocultarTitulo() {
   }, 3000); // Espera 3 segundos antes de ocultar completamente
 }
 
-// Llama a la función después de 216 segundos (216,000 milisegundos)
-setTimeout(ocultarTitulo, 216000);
+// Llama a la función después de 195 segundos (195,000 milisegundos),
+// ajustado a la duración de la nueva canción (~198s)
+setTimeout(ocultarTitulo, 195000);
