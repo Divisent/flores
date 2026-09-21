@@ -7,14 +7,14 @@ var lyrics = document.querySelector("#lyrics");
 // (cortes de la canción en ~66s, ~84s, ~116s, ~148-152s y el final ~188s).
 var lyricsData = [
   // --- Verso 1 (8 líneas) ---
-  { text: "Quería evitar el amor", time: 3 },
-  { text: "Y la vida color de rosa", time: 7 },
-  { text: "Obviar cosas del corazón", time: 11 },
-  { text: "Y poder hablar de otra cosa", time: 16 },
-  { text: "Quería evitar la pasión", time: 20 },
-  { text: "Y esos pasajes que se pintan", time: 24 },
-  { text: "Cuando la obsesión y el deseo", time: 28 },
-  { text: "Te alteran por una imagen femenina", time: 32 },
+  { text: "Quería evitar el amor", time: 9 },
+  { text: "Y la vida color de rosa", time: 13 },
+  { text: "Obviar cosas del corazón", time: 17 },
+  { text: "Y poder hablar de otra cosa", time: 21 },
+  { text: "Quería evitar la pasión", time: 25 },
+  { text: "Y esos pasajes que se pintan", time: 28 },
+  { text: "Cuando la obsesión y el deseo", time: 32 },
+  { text: "Te alteran por una imagen femenina", time: 35 },
 
   // --- Pre-coro (5 líneas) ---
   { text: "Pero da la casualidad", time: 40 },
